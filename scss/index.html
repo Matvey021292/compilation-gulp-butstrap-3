@@ -1,79 +1,57 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1">
     <title>Главная</title>
+    <link rel="shortcut icon" href="img/favicon/favicon.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png">
+    <link rel="stylesheet" type="text/css" href="css/widget.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link rel="stylesheet" href="css/components/font-awesome/font-awesome.css">
     <link href="css/components/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="css/slick.css">
+    <link rel="stylesheet" href="css/slick-theme.css">
+
+
 
     <!-- Bootstrap CSS -->
 
 </head>
 
-<body>
+<body class="lang-ru" onload="init()">
 
         <header>
             <!--#insert file="html/-header.html"-->
         </header>
-
+        <section>
+            <!--#insert file="html/-section.html"-->
+        </section>
+        <section class="overflow">
+            <!--#insert file="html/-section-info.html"-->
+        </section>
+        <footer>
+            <!--#insert file="html/-footer.html"-->
+        </footer>
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+
+        <script src="js/script.min.js"></script>
+<script src="js/tweenlite.min.js"></script>
+        <script src="js/graph.js"></script>
+        <script src="js/slick.js"></script>
         <script>
-            (function () {
-                var randBlocks = function(){
-                    var $randBlocks = $( '.grid-block.random' );
-                    $randBlocks.each(function(e, obj){
-                        var red = Math.floor( Math.random() * 255 ),
-                            green = Math.floor( Math.random() * 255 ),
-                            blue  = Math.floor( Math.random() * 255 ),
-                            a = Math.random()*1,
-                            addRandBlock = Math.floor( Math.random() * 6 );
-
-                        $(obj).css('background-color','rgba(' + red + ',' + green + ',' + blue + ',' + a + ')' );
-
-                        if( addRandBlock < 2 ){
-                            addEmptyBlocks( obj );
-                        }
-
-                    });
-                    function addEmptyBlocks( obj){
-                        $('<div/>')
-                            .addClass('grid-block empty')
-                            .insertAfter( obj );
-                    };
-                };
-
-                $('.side-nav').on( 'hover', function(){
-                    animateSideNav();
-                });
-
-                function animateSideNav(){
-                    var $nav = $('.side-nav');
-                    if($nav.css('active') === false){
-                        console.log('mouse over the side nav');
-                        $nav.addClass('active');
-                        $nav.width('200px');
-                    }else{
-                        console.log('active found');
-                    }
-                }
-
-                function init(){
-                    randBlocks();
-                    $('.side-nav').on( 'hover', function(){
-                        animateSideNav();});
-                }
-
-                (function(){
-                    init();
-                })();
-            })();
+            $('.single-item').slick();
         </script>
+
+
+
 </body>
 </html>

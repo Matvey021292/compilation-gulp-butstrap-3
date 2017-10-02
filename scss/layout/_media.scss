@@ -1,0 +1,140 @@
+@media(max-width: 992px) {
+  div.center_section {
+    padding: 0;
+  }
+  div.logo_center {
+    margin-top: 10px;
+  }
+  .wrapper_info .h1 {
+    margin: 20px 0;
+  }
+
+}
+
+@media(max-width: 705px) {
+
+  header .info {
+    display: flex;
+    flex-direction: column;
+    & > div {
+      width: 100%;
+    }
+    & > div:last-child {
+      margin-bottom: 20px;
+    }
+    .button_head,
+    .button_head_res {
+      box-shadow: 0 0 5px 1px #191919;
+    }
+  }
+}
+
+@media(max-width: 768px) {
+  .header_section_list {
+    display: flex;
+    flex-wrap: wrap;
+    & > div {
+      flex: 1 1 50%;
+    }
+  }
+  .section_info .row {
+    & > div {
+      margin: 10px 0px;
+      text-align: center;
+    }
+  }
+  .item {
+    flex-direction: column;
+    p {
+      margin: 0;
+    }
+    img {
+      margin-bottom: 20px;
+    }
+  }
+
+}
+@media  {
+  
+}
+@media(max-width: 550px) {
+  .right_section{
+    order: 1;
+  }
+  header h1,
+  p.h1 {
+    font-size: 35px;
+  }
+  .flex {
+    flex-wrap: wrap;
+    justify-content: center;
+
+  }
+  div.list_item {
+    width: 100%;
+  }
+  .vidget__graph-images .btn:after {
+    content: "";
+    display: none;
+  }
+  .center_section .header_text,
+  .container .text_section {
+    font-size: 15px;
+  }
+  .vidget__graph-images .vidget__graph-buttons {
+    position: absolute;
+    max-width: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+
+  }
+  .vidget__graph-left {
+    padding-left: 0;
+
+  }
+  .vidget__graph-buttons .btn.btn__green, .vidget__graph-buttons .btn.btn__red {
+    position: static;
+    margin: auto;
+  }
+  .wrapper_bottom {
+    text-align: center;
+  }
+  .carousel-caption{
+    .title_carousel{
+      font-size: 60px;
+    }
+    span{
+      background: none;
+      padding: 0;
+      margin: 0;
+    }
+    p{
+      font-size: 18px;
+    }
+    h6{
+      font-size: 45px;
+      margin:10px  0;
+    }
+  }
+}
+
+@media(max-width: 400px) {
+  .flex {
+    img.logo {
+      width: 90%;
+    }
+    .text_logo {
+      margin: 0;
+      border: 0;
+      padding: 0;
+      font-size: 8px;
+      br {
+        display: none;
+
+      }
+    }
+  }
+}
