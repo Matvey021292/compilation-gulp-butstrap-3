@@ -15,11 +15,11 @@ var pump = require('pump');
 
 gulp.task('compress', function (cb) {
   pump([
-        gulp.src('build/js/*.js'),
+        gulp.src('scss/js/*.js'),
         uglify(),
-        gulp.dest('build/minify-js')
+        gulp.dest('build/js/')
     ],
-    cb
+  cb
   );
 });
 
@@ -34,19 +34,27 @@ gulp.task('sprite', function(){
 	spriteData.css.pipe(gulp.dest('build/css/'));
 });
 gulp.task('images', () =>
-    gulp.src('build/images/*')
+    gulp.src('scss/images/*')
         .pipe(imagemin())
         .pipe(gulp.dest('build/img/'))
 );
 
+gulp.task('sass', function () {
+  return gulp.src('scss/**/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('scss/css/'))
+    .pipe(connect.reload());
+});
+
+
 gulp.task('minify-css', () => {
-  return gulp.src('build/css/*.css')
+  return gulp.src('scss/css/*.css')
     .pipe(cleanCSS({compatibility: 'ie8'}))
      .pipe(autoprefixer({
             browsers: ['last 2 versions'],
             cascade: false
         }))
-    .pipe(gulp.dest('build/css/.minify.css'));
+    .pipe(gulp.dest('build/css/'));
 });
 
 
@@ -54,7 +62,7 @@ gulp.task('html', function(){
 	gulp.src('scss/**/*.html')
 		.pipe(html())
 		.pipe(replace({
-			css: 'build/css/style.css'
+			css: 'scss/css/style.css'
 		}))
 		.pipe(gulp.dest('build/'))
 		.pipe(connect.reload());
@@ -65,13 +73,6 @@ gulp.task('server', function(){
 		livereload: true
 	});
 });
-gulp.task('sass', function () {
-  return gulp.src('scss/**/*.scss')
-    .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('build/css/'))
-    .pipe(connect.reload());
-});
-
 
 gulp.task('default', function(){
 	gulp.start('sass','minify-css','html', 'server','images','compress');
@@ -84,13 +85,13 @@ gulp.task('default', function(){
 		gulp.start('html');
 	});
 		
-		gulp.watch('build/css/style.css',['minify-css'],function(){
+		gulp.watch('scss/css/style.css',['minify-css'],function(){
 			gulp.start('minify-css');
 		});
-		gulp.watch(['build/images/*'],function(){
+		gulp.watch(['scss/images/*'],function(){
 			gulp.start('images')
 		});
-		gulp.watch(['build/js/*.js'],['compress'], function(){
+		gulp.watch(['scss/js/*.js'],['compress'], function(){
 		gulp.start('compress');
 	});
 });

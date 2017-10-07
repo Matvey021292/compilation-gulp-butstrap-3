@@ -1,1 +1,0 @@
-var hello="Hello",hello="Hello",hello="Hello",hello="Hello",hello="Hello";
